@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting of the World Trivia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+</head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<!-- <script type="text/javascript" src="assets/js/trivia.js"></script> -->
+
+<body>
+    <div class="grid">
+        <div id="quiz">
+            <h1 class="text-center">Greetings of the World Trivia</h1>
+            <hr style="margin-bottom: 20px">
+            <h3 class="text-center">Where in the world would you say hello like this?</h3>
+            <hr style="margin-bottom: 20px">
+        </div>
+        <div class="main">
+        </div>
+        <h1 class="question"></h1>
+        <div class="bottons">
+            <button id="btn0" class="answer"><span id="choice0"></span></button>
+            <button id="btn1" class="answer"><span id="choice1"></span></button>
+            <button id="btn2" class="answer"><span id="choice2"></span></button>
+            <button id="btn3" class="answer"><span id="choice3"></span></button>
+        </div>
+    </div>
+    <!-- Create random target color -->
+    <footer>
+        <p id="progress">Question x of y</p>
+    </footer>
+    <script type="text/javascript"></script>
+    <script>
+    $(document).ready(function() {
+        //Array of answers
+
+        function startGame() {
+            startScreen = "<p class='text-center main-button-container'><a class='btn btn-primary btn-lg btn-block startBtn' href='#' role='button'>Start Quiz</a></p>";
+            $(".main").html(startScreen);
+        }
+        startGame();
+
+        $(".main").on("click", ".startBtn", function(event) {
+            showQuestions();
+            $(".startBtn").hide();  
+            // timeWrapper()
+            // timeCounter();
+        });
+
+
+        function showQuestions() {
+            $(".question").html(questionsArr[0]);
+            $("#btn0").html(answersArr[0][0]);
+            $("#btn1").html(answersArr[0][1]);
+            $("#btn2").html(answersArr[0][2]);
+            $("#btn3").html(answersArr[0][3]);
+
+        };
+
+        $("button").on("click",function(event){
+            userAnswer = $(this).text();
+            if(userAnswer === rightAnswers[0]){
+                win()
+                // alert("Correct!");
+                // clearInterval(stopwatcher);
+            }
+            else{
+                alert("Err");
+
+            }
+        });
+
+        function win(){
+            corrects++
+            $(".bottons").html("<p class='text-center'>Correct! The answer is:</p>" + rightAnswers[0] + "<p>" + imageArr[0]);
+
+                // "<p class='text-center'>Correct! The answer is: " + rightAnswers[0]) + "<p>" + imageArr[0];
+        }
+       });
+ 
+
+
+        var startScreen
+        var answersDisplay = [];
+        //Question targeted
+        var questionDisplay = [];
+        //Selected answer by user
+        var userAnswer
+        // count the 30 secs
+        var timeCounter = 30
+        var stopwatcher
+        //will count the question in place
+        var questionCounter
+        //score variables
+        var corrects = 0
+        var incorrects = 0
+        var unanswered = 0
+
+        //Array of questions and answers
+        var questionsArr = ["Bonjour", "Konnichiwa", "Buon Giorno", "Buenos dias", "Guten tag",
+            "Marhaba", "Ni Hau", "Zdras-Tvuy-Te"
+        ];
+
+
+        var answersArr = [
+            ["Japan", "Germany", "France", "Mexico"],
+            ["Italy", "Japan", "Mexico", "China"],
+            ["Italy", "Japan", "Mexico", "Russia"],
+            ["Mexico", "France", "United States", "Saudi Arabia"],
+            ["Russia", "France", "Germany", "Saudi Arabia"],
+            ["Saudi Arabia", "France", "Germany", "Italy"],
+            ["Russia", "China", "Germany", "Japan"],
+            ["China", "France", "Russia", "Russia"]
+        ];
+
+        var rightAnswers = ["France", "Japan", "Italy", "Mexico", "Germany", "Saudi Arabia", "China", "Russia"];
+
+        var imageArr = ["<img class='center-block img-right' src='assets/images/france.jpg' width='22%'>", "<img class='center-block img-right' src='assets/images/japan.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/italy.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/mexico.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/germany.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/saudi.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/china.jpg' width=22%>", "<img class='center-block img-right' src='assets/images/russia.jpg' width=22%>"];
+
+
+
+    </script>
+</body>
+ 
+</html>
