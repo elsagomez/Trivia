@@ -1,6 +1,7 @@
 body{
 	background: url("../images/background.jpg");
-	background-position: 0px -500px;
+	background-size: cover;
+	background-position: 0px -200px;
 	font-family: Gloria Hallelujah;
 }
 
