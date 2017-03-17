@@ -32,7 +32,10 @@ $(document).ready(function() {
         });
 
 
-        function showQuestions() {   
+        function showQuestions() {  
+            $(".main").empty();
+            $(".bottons").show()
+        //here clear the html 
             $(".question").html(questionsArr[questionNo]);
             $("#btn0").html(answersArr[questionNo][0]);
             $("#btn1").html(answersArr[questionNo][1]);
@@ -44,21 +47,25 @@ $(document).ready(function() {
 
         
         function win(){
-            corrects++
+             corrects++
+            $(".bottons").hide();
             $(".main").html("<h3 class='text-center'>Correct! The answer is:</h3>" + "<h3 class='text-center'>" +rightAnswers[questionNo] + "</h3>" + "<h3>" + imageArr[questionNo]);
             setTimeout(timeWait, 3000); 
+            $(".bottons").hide();
 
                 // "<p class='text-center'>Correct! The answer is: " + rightAnswers[0]) + "<p>" + imageArr[0];
         };
 
         function lose(){
             incorrects++
+            $(".bottons").hide();
             $(".main").html("<h3 class='text-center'>Sorry, the correct answer is: </h3>" + "<h3 class='text-center'>" + rightAnswers[questionNo] + "</h3>");
             setTimeout(timeWait, 3000); 
         }
 
         function timeout(){
             unanswered++
+            $(".bottons").hide();
             $(".main").html("<h3 class='text-center'>Timeout!, the correct answer is: </h3>" + "<h3 class='text-center'>" + rightAnswers[questionNo] + "</h3>");
             setTimeout(timeWait, 3000); 
 
@@ -99,11 +106,15 @@ $(document).ready(function() {
             $("#instruction").hide();
             $(".question").hide();
             if(corrects > incorrects){
-                $(".bottons").html("<h3 class='text-center'>Well done! Your score is: </h3>" + "<h4 class='text-center'>Corrects: " + corrects + "<h4 class='text-center'>Incorrects: " + incorrects + "<h4 class='text-center'>Unansered: " + unanswered);
+                $(".main").html("<h3 class='text-center'>Well done! Your score is: </h3>" + "<h4 class='text-center'>Corrects: " + corrects + "<h4 class='text-center'>Incorrects: " + incorrects + "<h4 class='text-center'>Unanswered: " + unanswered);
+                $(".timer").empty();
+                $("#partimer").empty();
             }
             else{
-                $(".bottons").html("<h3 class='text-center'>Keep Trying! Your score is: </h3>" + "<h4 class='text-center'>Corrects: " + corrects + "<h4 class='text-center'>Incorrects: " + incorrects + "<h4 class='text-center'>Unansered: " + unanswered);
-            }
+                $(".main").html("<h3 class='text-center'>Keep Trying! Your score is: </h3>" + "<h4 class='text-center'>Corrects: " + corrects + "<h4 class='text-center'>Incorrects: " + incorrects + "<h4 class='text-center'>Unanswered: " + unanswered);
+                $(".timer").empty();
+                 $("#partimer").empty();
+            }   
         }
 
 
